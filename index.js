@@ -10,9 +10,11 @@ import chatRoomRouter from "./routes/chatRoom.js";
 import deleteRouter from "./routes/delete.js";
 // // middlewares
 import { decode } from "./middlewares/jwt.js";
+//import dotenv from "dotenv/config";
+//require("dotenv").config();
 
 // mongoose.connect(
-//   "mongodb+srv://cpdb:cp_pwd@cluster0.srvj8.mongodb.net/chat_app?retryWrites=true&w=majority",
+//   process.env.mongoURI,
 //   { useNewUrlParser: true, useUnifiedTopology: true },
 //   () => {
 //     console.log(`db connected`);
