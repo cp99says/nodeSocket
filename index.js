@@ -3,11 +3,14 @@ const app = express();
 import logger from "morgan";
 import cors from "cors";
 import mongoose from "mongoose";
+import http from "http";
+import WebSockets from "./utils/WebSockets.js";
 ////////////////////////////////
 import indexRouter from "./routes/index.js";
 import userRouter from "./routes/user.js";
 import chatRoomRouter from "./routes/chatRoom.js";
 import deleteRouter from "./routes/delete.js";
+import * as socketio from "socket.io";
 // // middlewares
 import { decode } from "./middlewares/jwt.js";
 //import dotenv from "dotenv/config";
@@ -37,7 +40,12 @@ app.use("*", cors());
 // app.use("/users", userRouter);
 // app.use("/room", decode, chatRoomRouter);
 // app.use("/delete", deleteRouter);
+const server = http.createServer(app);
+/** Create socket connection */
+var io = socketio.listen;
+//global.io = socketio.listen(server);
+//global.io.on("connection", WebSockets.connection);
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`server started at port ${port}`);
 });
