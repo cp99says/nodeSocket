@@ -1,9 +1,9 @@
-import express from "express"
-import deleteController from "../controllers/delete"
-const app=express()
+import express from "express";
+import deleteController from "../controllers/delete.js";
+const app = express();
 
-app  
-  .delete('/room/:roomId',deleteController.deleteRoomById)
-  .delete('/messages/:messageId',deleteController.deleteMessageById)
+app
+  .delete("/room/:roomId", deleteController.deleteRoomById)
+  .delete("/messages/:messageId", deleteController.deleteMessageById);
 
-export default app
+export default app;
